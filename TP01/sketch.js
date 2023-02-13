@@ -11,6 +11,7 @@ function draw() {
   let y = mouseY;
   let ix = width - x;
   let iy = height - y;
+
   if (keyIsPressed) colorBack += 5;
   background((y + colorBack) % 255, (x + colorBack) % 255, colorBack % 255);
   let colorR = (x + colorBack) % 255;
