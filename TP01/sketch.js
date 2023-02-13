@@ -1,4 +1,6 @@
 
+
+let colorBack = 0;
 function setup() {
   createCanvas(500, 500);
 
@@ -9,15 +11,13 @@ function draw() {
   let y = mouseY;
   let ix = width - x;
   let iy = height - y;
-  if (keyIsPressed) background(126)
-  else background(x - y, (x + y) % 255, (x * y) % 255);
-  let colorR = x % 255;
-  let colorG = y % 255;
-  let colorB = (x * y) % 255;
-  if (keyIsPressed) fill(255);
-  else fill(colorR, colorG, colorB);
+  if (keyIsPressed) colorBack += 5;
+  background((y + colorBack) % 255, (x + colorBack) % 255, colorBack % 255);
+  let colorR = (x + colorBack) % 255;
+  let colorG = (y + colorBack) % 255;
+  let colorB = (255 + colorBack) / 2;
+  fill(colorR % 255, colorG % 255, colorB % 255);
   ellipse(x, y, y, y);
-  if (keyIsPressed) fill(0)
-  else fill(255 - colorR, 255 - colorG, 255 - colorB);
+  fill((abs(255 - colorR) % 255), abs((255 - colorG) % 255), abs((255 - colorB) % 255));
   ellipse(ix, iy, iy, iy);
 }
